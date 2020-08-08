@@ -1,5 +1,7 @@
 # tinylabs-fed-test
 
+Live demo available at https://getchange-demo.firebaseapp.com
+
 ## Project setup
 ```
 npm install
