@@ -96,7 +96,7 @@
                 Delete
               </th>
             </tr>
-            <tr v-for="data in employees" :key="data._id">
+            <tr v-for="data in dummyEmployee" :key="data._id">
               <td>
                 <input type="radio" name="employee" class="checkbox" :id="data._id" />
                 <label :for="data._id" class="square-box"  @click="changeDefault(data)"></label>
@@ -133,7 +133,57 @@ export default {
       employees: [],
       employee: {},
       apiURL: 'https://crudcrud.com/api/1e0110dfc9ea4e2b82031014edab66d5',
-      searchParams: ''
+      searchParams: '',
+      dummyEmployee: [
+        {
+          _id: 984938,
+          firstname: 'Janet',
+          lastname: 'Doe',
+          phone: '9902883839',
+          role: 'Admin',
+          email: 'janetdoe@dummies.com'
+        },
+        {
+          _id: 98499009,
+          firstname: 'Janet',
+          lastname: 'Doe',
+          phone: '9902883839',
+          role: 'Admin',
+          email: 'janetdoe@dummies.com'
+        },
+        {
+          _id: 984938777,
+          firstname: 'Janet',
+          lastname: 'Doe',
+          phone: '9902883839',
+          role: 'Admin',
+          email: 'janetdoe@dummies.com'
+        },
+        {
+          _id: 984938000,
+          firstname: 'Janet',
+          lastname: 'Doe',
+          phone: '9902883839',
+          role: 'Admin',
+          email: 'janetdoe@dummies.com'
+        },
+        {
+          _id: 9849386353,
+          firstname: 'Janet',
+          lastname: 'Doe',
+          phone: '9902883839',
+          role: 'Admin',
+          email: 'janetdoe@dummies.com'
+        },
+        {
+          _id: 9849009338,
+          firstname: 'Janet',
+          lastname: 'Doe',
+          phone: '9902883839',
+          role: 'Admin',
+          email: 'janetdoe@dummies.com'
+        }
+      ]
     }
   },
   methods: {
@@ -162,12 +212,7 @@ export default {
       })
     },
     updateEmployee: function() {
-      axios.put(`https://cors-anywhere.herokuapp.com/${this.apiURL}/employees/${this.employee._id}`, this.employee,{
-        headers: {
-          //'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+      axios.put(`${this.apiURL}/employees/${this.employee._id}`, this.employee)
       .then(() => {
         this.employee = {}
         alert("User's role has been changed successfully")
@@ -177,12 +222,7 @@ export default {
       })
     },
     deleteEmployee: function(payload) {
-      axios.delete(`https://cors-anywhere.herokuapp.com/${this.apiURL}/${payload}`,
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      }).then(() => {
+      axios.delete(`${this.apiURL}/${payload}`).then(() => {
         console.log("Delete Employee's data")
       }).catch(error => {
         console.log(error)
