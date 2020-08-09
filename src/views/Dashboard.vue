@@ -212,8 +212,12 @@ export default {
       })
     },
     updateEmployee: function() {
-      axios.put(`${this.apiURL}/employees/${this.employee._id}`, this.employee)
-      .then(() => {
+      axios.put(`https://cors-anywhere.herokuapp.com/${this.apiURL}/employees/${this.employee._id}`, this.employee,{
+        headers: {
+          //'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then(() => {
         this.employee = {}
         alert("User's role has been changed successfully")
       }).catch( error=> {
@@ -222,7 +226,12 @@ export default {
       })
     },
     deleteEmployee: function(payload) {
-      axios.delete(`${this.apiURL}/${payload}`).then(() => {
+      axios.delete(`https://cors-anywhere.herokuapp.com/${this.apiURL}/${payload}`,
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then(() => {
         console.log("Delete Employee's data")
       }).catch(error => {
         console.log(error)
