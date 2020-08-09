@@ -137,7 +137,7 @@ export default {
       dummyEmployee: [
         {
           _id: 984938,
-          firstname: 'Janet',
+          firstname: 'Jack',
           lastname: 'Doe',
           phone: '9902883839',
           role: 'Admin',
@@ -145,7 +145,7 @@ export default {
         },
         {
           _id: 98499009,
-          firstname: 'Janet',
+          firstname: 'Jack',
           lastname: 'Doe',
           phone: '9902883839',
           role: 'Admin',
@@ -153,31 +153,7 @@ export default {
         },
         {
           _id: 984938777,
-          firstname: 'Janet',
-          lastname: 'Doe',
-          phone: '9902883839',
-          role: 'Admin',
-          email: 'janetdoe@dummies.com'
-        },
-        {
-          _id: 984938000,
-          firstname: 'Janet',
-          lastname: 'Doe',
-          phone: '9902883839',
-          role: 'Admin',
-          email: 'janetdoe@dummies.com'
-        },
-        {
-          _id: 9849386353,
-          firstname: 'Janet',
-          lastname: 'Doe',
-          phone: '9902883839',
-          role: 'Admin',
-          email: 'janetdoe@dummies.com'
-        },
-        {
-          _id: 9849009338,
-          firstname: 'Janet',
+          firstname: 'Jack',
           lastname: 'Doe',
           phone: '9902883839',
           role: 'Admin',
@@ -198,7 +174,12 @@ export default {
         phone: '0988883904',
         role: 'Admin'
       }
-      axios.post(`${this.apiURL}/employees`, employee).then( response =>{
+      axios.post(`https://cors-anywhere.herokuapp.com/${this.apiURL}/employees`, employee,{
+        headers: {
+          //'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then( response =>{
         alert("New Employee added")
         console.log(response.data)
       }).catch(error => {
@@ -207,7 +188,12 @@ export default {
       })
     },
     fetchEmployees: function() {
-      axios.get(`${this.apiURL}/employees`).then( result => {
+      axios.get(`https://cors-anywhere.herokuapp.com/${this.apiURL}/employees`,{
+        headers: {
+          //'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then( result => {
         this.employees = result.data
       })
     },
